@@ -11,7 +11,7 @@ class FUSLight(NSApplication):
         statusbar = NSStatusBar.systemStatusBar()
         self.statusitem = statusbar.statusItemWithLength_(NSVariableStatusItemLength)
         #--- If you want icon, uncomment the code below ---#        
-        #self.icon = NSImage.alloc().initByReferencingFile_('UiBmerke_grayscale_96.png')
+        #self.icon = NSImage.alloc().initByReferencingFile_('logo.png')
         #self.icon.setScalesWhenResized_(True)
         #self.icon.setSize_((20, 20))
         #self.statusitem.setImage_(self.icon)
