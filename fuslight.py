@@ -11,21 +11,36 @@ class FUSLight(NSApplication):
         statusbar = NSStatusBar.systemStatusBar()
         self.statusitem = statusbar.statusItemWithLength_(NSVariableStatusItemLength)
         #--- If you want icon, uncomment the code below ---#        
-        #self.icon = NSImage.alloc().initByReferencingFile_('UiBmerke_grayscale_96.png')
-        #self.icon.setScalesWhenResized_(True)
-        #self.icon.setSize_((20, 20))
-        #self.statusitem.setImage_(self.icon)
+        self.icon = NSImage.alloc().initByReferencingFile_('UiBmerke_grayscale_96.png')
+        self.icon.setScalesWhenResized_(True)
+        self.icon.setSize_((19, 19))
+        self.statusitem.setImage_(self.icon)
         
         self.statusitem.setHighlightMode_(True)
-        self.statusitem.setTitle_(NSFullUserName())
-        self.statusitem.setAttributedTitle_(NSFullUserName())
+        self.statusitem.setTitle_('')
+        self.statusitem.setAttributedTitle_('')
 
         #make the menu
+
+
+        #NSFullUserName()
         self.menubarMenu = NSMenu.alloc().init()
 
-        self.menuItem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Loginwindow', 'loginWindow:', '')
+        #Add the users name
+        self.menuItem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_(NSFullUserName(), '', '')
         self.menubarMenu.addItem_(self.menuItem)
 
+        #[newMenu addItem:[NSMenuItem separatorItem]];
+        self.menuitem = NSMenuItem.separatorItem()        
+        self.menubarMenu.addItem_(self.menuitem)
+        
+        self.menuItem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Login window', 'loginWindow:', '')
+        self.menubarMenu.addItem_(self.menuItem)
+        
+        #[newMenu addItem:[NSMenuItem separatorItem]];
+        self.menuitem = NSMenuItem.separatorItem()        
+        self.menubarMenu.addItem_(self.menuitem)
+    
         self.quit = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Quit', 'terminate:', '')
         self.menubarMenu.addItem_(self.quit)
 
